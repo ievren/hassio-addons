@@ -35,6 +35,8 @@
     "address": "192.168.99.1",
     "netmask": "255.255.255.0",
     "broadcast": "192.168.99.254"
+    "hide_ap": "true"
+    "device": "wlan0"
 
   },
   "schema": {
@@ -44,5 +46,7 @@
     "address": "str",
     "netmask": "str",
     "broadcast": "str"
+    "hide_ap": "str"
+    "device": "str"
   }
 } 
