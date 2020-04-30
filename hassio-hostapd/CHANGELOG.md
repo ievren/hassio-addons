@@ -1,4 +1,7 @@
 # Changelog
+## [1.0.4]
+### Feature Parameters
+- added hide AP, interface parameter
 
 ## [1.0.3]
 ### Fixed
