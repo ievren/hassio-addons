@@ -1,6 +1,6 @@
 {
   "name": "Hassio Hostapd",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "slug": "hassio-hostapd",
   "description": "Raspberry Pi as hotspot in hass.io",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -36,7 +36,7 @@
     "netmask": "255.255.255.0",
     "broadcast": "192.168.99.254",
     "hide_ap": "true",
-    "device": "wlan0"
+    "interface": "wlan0"
 
   },
   "schema": {
@@ -47,6 +47,6 @@
     "netmask": "str",
     "broadcast": "str",
     "hide_ap": "str",
-    "device": "str"
+    "interface": "str"
   }
 } 
