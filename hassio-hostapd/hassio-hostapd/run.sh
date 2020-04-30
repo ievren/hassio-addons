@@ -14,9 +14,9 @@ INTERFACE=$(jq --raw-output ".interface" $CONFIG_PATH)
 # SIGTERM-handler this funciton will be executed when the container receives the SIGTERM signal (when stopping)
 term_handler(){
 	echo "Stopping..."
-	ifdown INTERFACE
-	ip link set INTERFACE down
-	ip addr flush dev INTERFACE
+	ifdown $INTERFACE
+	ip link set $INTERFACE down
+	ip addr flush dev $INTERFACE
 	exit 0
 }
 
@@ -26,7 +26,7 @@ trap 'term_handler' SIGTERM
 echo "Starting..."
 
 echo "Set nmcli managed no"
-nmcli dev set INTERFACE managed no
+nmcli dev set $INTERFACE managed no
 
 # Enforces required env variables
 required_vars=(SSID WPA_PASSPHRASE CHANNEL ADDRESS NETMASK BROADCAST INTERFACE)
@@ -59,17 +59,17 @@ fi
 # Setup interface
 echo "Setup interface ..."
 
-#ip link set INTERFACE down
-#ip addr flush dev INTERFACE
-#ip addr add ${IP_ADDRESS}/24 dev INTERFACE
-#ip link set INTERFACE up
+#ip link set $INTERFACE down
+#ip addr flush dev $INTERFACE
+#ip addr add ${IP_ADDRESS}/24 dev $INTERFACE
+#ip link set $INTERFACE up
 
 echo "address $ADDRESS"$'\n' >> /etc/network/interfaces
 echo "netmask $NETMASK"$'\n' >> /etc/network/interfaces
 echo "broadcast $BROADCAST"$'\n' >> /etc/network/interfaces
 
-ifdown INTERFACE
-ifup INTERFACE
+ifdown $INTERFACE
+ifup $INTERFACE
 
 echo "Starting HostAP daemon ..."
 hostapd -d /hostapd.conf & wait ${!}
